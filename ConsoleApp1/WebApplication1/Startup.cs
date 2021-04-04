@@ -45,6 +45,14 @@ namespace WebApplication1
                 new AdressRepository(x.GetService<KzDbContext>())
                 );
 
+            services.AddScoped<BusRepository>(x =>
+                new BusRepository(x.GetService<KzDbContext>())
+                );
+
+            services.AddScoped<TripRouteRepository>(x =>
+                new TripRouteRepository(x.GetService<KzDbContext>())
+                );
+
             services.AddScoped<UserService>(x =>
                 new UserService(
                     x.GetService<CitizenRepository>(),
@@ -76,6 +84,24 @@ namespace WebApplication1
             var config = new MapperConfiguration(configurationExp);
             var mapper = new Mapper(config);
             services.AddScoped<IMapper>(x => mapper);
+
+            var configurationExpNew = new MapperConfigurationExpression();
+
+            configurationExpNew.CreateMap<Bus, BusParkViewModel>();
+            configurationExpNew.CreateMap<BusParkViewModel, Bus>();
+
+            var configNew = new MapperConfiguration(configurationExpNew);
+            var mapperNew = new Mapper(configNew);
+            services.AddScoped<IMapper>(x => mapperNew);
+
+            var configurationExpTrip = new MapperConfigurationExpression();
+
+            configurationExpTrip.CreateMap<TripRoute, TripViewModel>();
+            configurationExpTrip.CreateMap<TripViewModel, TripRoute>();
+
+            var configTrip = new MapperConfiguration(configurationExpTrip);
+            var mapperTrip = new Mapper(configTrip);
+            services.AddScoped<IMapper>(x => mapperTrip);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

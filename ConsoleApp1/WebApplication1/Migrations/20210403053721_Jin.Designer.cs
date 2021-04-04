@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.EfStuff;
 
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(KzDbContext))]
-    partial class KzDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210403053721_Jin")]
+    partial class Jin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,35 +40,6 @@ namespace WebApplication1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Adress");
-                });
-
-            modelBuilder.Entity("WebApplication1.EfStuff.Model.Bus", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Model")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<long?>("RoutePlanId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoutePlanId");
-
-                    b.ToTable("Buses");
                 });
 
             modelBuilder.Entity("WebApplication1.EfStuff.Model.Citizen", b =>
@@ -98,42 +71,6 @@ namespace WebApplication1.Migrations
                     b.ToTable("Citizens");
                 });
 
-            modelBuilder.Entity("WebApplication1.EfStuff.Model.TripRoute", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("Length")
-                        .HasColumnType("float");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("TripTime")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TripRoute");
-                });
-
-            modelBuilder.Entity("WebApplication1.EfStuff.Model.Bus", b =>
-                {
-                    b.HasOne("WebApplication1.EfStuff.Model.TripRoute", "RoutePlan")
-                        .WithMany("Buses")
-                        .HasForeignKey("RoutePlanId");
-
-                    b.Navigation("RoutePlan");
-                });
-
             modelBuilder.Entity("WebApplication1.EfStuff.Model.Citizen", b =>
                 {
                     b.HasOne("WebApplication1.EfStuff.Model.Adress", "House")
@@ -146,11 +83,6 @@ namespace WebApplication1.Migrations
             modelBuilder.Entity("WebApplication1.EfStuff.Model.Adress", b =>
                 {
                     b.Navigation("Citizens");
-                });
-
-            modelBuilder.Entity("WebApplication1.EfStuff.Model.TripRoute", b =>
-                {
-                    b.Navigation("Buses");
                 });
 #pragma warning restore 612, 618
         }

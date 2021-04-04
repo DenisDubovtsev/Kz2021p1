@@ -13,6 +13,9 @@ namespace WebApplication1.EfStuff
 
         public DbSet<Adress> Adress { get; set; }
 
+        public DbSet<Bus> Buses { get; set; }
+        public DbSet<TripRoute> TripRoute { get; set; }
+
         public KzDbContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -20,6 +23,12 @@ namespace WebApplication1.EfStuff
             modelBuilder.Entity<Citizen>()
                 .HasOne(x => x.House)
                 .WithMany(x => x.Citizens);
+
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Bus>()
+                .HasOne(x => x.RoutePlan)
+                .WithMany(x => x.Buses);
 
             base.OnModelCreating(modelBuilder);
         }
