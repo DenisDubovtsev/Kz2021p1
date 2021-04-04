@@ -62,7 +62,7 @@ namespace WebApplication1.Controllers.BusSystem
                 Capacity = newBus.Capacity,
                 Price = newBus.Price
             };
-
+            
             _busRepository.Save(bus);
 
             return RedirectToAction("Index");
