@@ -12,8 +12,13 @@ namespace WebApplication1.EfStuff.Repositoryies
         
         public Bus GetByModel(string model)
         {
-            return _kzDbContext.Buses.SingleOrDefault(x => x.Model == model);
+            return _kzDbContext.Buses.SingleOrDefault(x => x.Model == model);            
         }
-        
+
+        public Bus GetById(long id)
+        {
+            return _kzDbContext.Buses.SingleOrDefault(x => x.Id == id);
+        }
+
     }
 }

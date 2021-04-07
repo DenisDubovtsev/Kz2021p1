@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using WebApplication1.EfStuff.Repositoryies;
 using WebApplication1.EfStuff.Model;
 using WebApplication1.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
 
 namespace WebApplication1.Controllers.BusSystem
 {
@@ -82,6 +84,11 @@ namespace WebApplication1.Controllers.BusSystem
 
             return Json(true);
         }
+
+        // GET: BusParkViewModels/Edit/5
+        
+
+
     }
     
 }

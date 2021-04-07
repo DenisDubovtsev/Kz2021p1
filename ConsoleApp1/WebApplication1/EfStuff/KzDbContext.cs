@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.EfStuff.Model;
+using WebApplication1.Models;
 
 namespace WebApplication1.EfStuff
 {
@@ -32,5 +33,7 @@ namespace WebApplication1.EfStuff
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public DbSet<WebApplication1.Models.BusParkViewModel> BusParkViewModel { get; set; }
     }
 }

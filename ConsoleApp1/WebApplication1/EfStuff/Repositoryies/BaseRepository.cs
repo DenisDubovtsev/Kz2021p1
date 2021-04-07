@@ -39,7 +39,9 @@ namespace WebApplication1.EfStuff.Repositoryies
         public void Remove(DbModel model)
         {
             _dbSet.Remove(model);
-            _kzDbContext.SaveChanges();
+            _kzDbContext.SaveChanges();            
         }
+
+        
     }
 }
