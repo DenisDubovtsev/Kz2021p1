@@ -8,9 +8,9 @@ using WebApplication1.EfStuff.Model;
 using WebApplication1.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Http;
-using AutoMapper;
-using WebApplication1.Services;
 using WebApplication1.EfStuff.Repositoryies.Interface;
+using WebApplication1.Services;
+using AutoMapper;
 
 namespace WebApplication1.Controllers.BusSystem
 {
